@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   namespace :api do
-     namespace :v1 do
-       resources :teas
-       resources :customers
-       resources :subscriptions
-     end
-   end
+    namespace :v1 do
+      resources :teas
+      resources :customers, only: [] do
+        resources :subscriptions, only: [:index, :create, :update]
+      end
+    end
+  end
 end
