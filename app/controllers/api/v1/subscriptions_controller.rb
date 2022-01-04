@@ -7,7 +7,7 @@ class Api::V1::SubscriptionsController < ApplicationController
 
   def create
     customer = Customer.find(params[:customer_id])
-    subscription = Subscription.create!(subscription_params)
+    subscription = customer.subscriptions.create!(subscription_params)
     json_response(SubscriptionSerializer.new(subscription))
   end
 
