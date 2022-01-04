@@ -25,7 +25,7 @@ describe 'Subscriptions::Create', type: :request do
 
       before { post "/api/v1/customers/#{customer.id}/subscriptions", params: valid_attributes }
 
-      it 'creates a new subscription for the customer', :aggregate_failures do
+      it 'creates a new subscription for the customer' do
         expect(json).not_to be_empty
         expect(json_data.size).to eq 3
 
@@ -47,7 +47,7 @@ describe 'Subscriptions::Create', type: :request do
 
       before { post "/api/v1/customers/#{bad_customer_id}/subscriptions", params: {} }
 
-      it 'returns an error that the customer cannot be found', :aggregate_failures do
+      it 'returns an error that the customer cannot be found' do
 
         expect(json).not_to be_empty
         expect(json[:errors]).to eq errors
@@ -73,7 +73,7 @@ describe 'Subscriptions::Create', type: :request do
 
       before { post "/api/v1/customers/#{customer.id}/subscriptions", params: {} }
 
-      it 'returns error messages', :aggregate_failures do
+      it 'returns error messages' do
         expect(json).not_to be_empty
         expect(json[:errors]).to eq errors
       end
