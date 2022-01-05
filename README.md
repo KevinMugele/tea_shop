@@ -8,6 +8,7 @@ Find the project spec [here](https://mod4.turing.edu/projects/take_home/take_hom
 
 - [Overview](#overview)
 - [Tools Utilized](#framework)
+- [Database Schema](#database)
 - [Contributors](#contributors)
 - [Deployed Endpoints](#deployed-endpoints)
 - [Project Configurations](#setup)
@@ -71,6 +72,10 @@ Learning goals and areas of focus consisted of:
   <img src="https://img.shields.io/badge/MVC-b8b018.svg?&style=flaste&logo=MVC&logoColor=white" />
   <img src="https://img.shields.io/badge/REST-33b818.svg?&style=flaste&logo=REST&logoColor=white" />  
 </p>
+
+### <ins>Database</ins>
+
+<img width="1084" alt="Database Schema" src="https://user-images.githubusercontent.com/82777170/148253823-6e4c8479-cb8a-4c51-99b3-095b6e40dfca.png">
 
 ### <ins>Contributors</ins>
 
