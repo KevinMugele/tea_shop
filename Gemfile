@@ -26,11 +26,11 @@ gem 'bootsnap', '>= 1.4.4', require: false
 # gem 'rack-cors'
 
 gem 'date'
+gem 'factory_bot_rails'
+gem 'faker'
 gem 'faraday'
 gem 'json'
 gem 'jsonapi-serializer'
-gem 'factory_bot_rails'
-gem 'faker'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -39,21 +39,21 @@ end
 
 group :development do
   gem 'listen', '~> 3.3'
-  gem 'web-console', '>= 3.3.0'
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rake', require: false
   gem 'rubocop-rspec', require: false
+  gem 'web-console', '>= 3.3.0'
 end
 
 group :test do
-  gem 'rspec-rails', '~> 4.0.1'
-  gem 'simplecov'
-  gem 'shoulda-matchers'
   gem 'database_cleaner-active_record'
-  gem 'webmock'
+  gem 'rspec-rails', '~> 4.0.1'
+  gem 'shoulda-matchers'
+  gem 'simplecov'
   gem 'vcr'
+  gem 'webmock'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

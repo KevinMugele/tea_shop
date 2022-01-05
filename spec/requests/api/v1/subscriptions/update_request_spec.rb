@@ -9,7 +9,9 @@ describe 'Subscriptions::Update', type: :request do
     let(:json_data) { json[:data] }
 
     context 'when an existing customer wants to cancel an active subscription' do
-      before { patch "/api/v1/customers/#{customer.id}/subscriptions/#{subscription.id}", params: { status: 'Cancelled' } }
+      before do
+        patch "/api/v1/customers/#{customer.id}/subscriptions/#{subscription.id}", params: { status: 'Cancelled' }
+      end
 
       it 'cancels the subscription for the customer' do
         expect(json).not_to be_empty

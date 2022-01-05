@@ -12,9 +12,6 @@ describe 'Subscriptions::Create', type: :request do
       let(:valid_attributes) do
         {
           title: tea.title,
-          description: tea.description,
-          temperature: tea.temperature,
-          brew_time: tea.brew_time,
           tea_id: tea.id,
           price: '50',
           frequency: 'Weekly',
@@ -48,7 +45,6 @@ describe 'Subscriptions::Create', type: :request do
       before { post "/api/v1/customers/#{bad_customer_id}/subscriptions", params: {} }
 
       it 'returns an error that the customer cannot be found' do
-
         expect(json).not_to be_empty
         expect(json[:errors]).to eq errors
       end
@@ -62,7 +58,7 @@ describe 'Subscriptions::Create', type: :request do
 
       let(:errors) do
         [
-          "Tea must exist",
+          'Tea must exist',
           "Tea can't be blank",
           "Price can't be blank",
           'Price is not a number',
