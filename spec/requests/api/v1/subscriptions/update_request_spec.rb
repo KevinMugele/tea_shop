@@ -54,7 +54,9 @@ describe 'Subscriptions::Update', type: :request do
     context 'when the params are invalid' do
       let(:errors) { ["'TESTING' is not a valid status"] }
 
-      before { patch "/api/v1/customers/#{customer.id}/subscriptions/#{subscription.id}", params: { status: 'TESTING' } }
+      before do
+        patch "/api/v1/customers/#{customer.id}/subscriptions/#{subscription.id}", params: { status: 'TESTING' }
+      end
 
       it 'returns an error messages' do
         expect(json).not_to be_empty
