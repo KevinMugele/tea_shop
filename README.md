@@ -85,6 +85,205 @@ Learning goals and areas of focus consisted of:
 
 ## <ins>Deployed Endpoints</ins>
 
+The `base path` of each endpoint is:
+
+```
+/api/v1
+```
+
+- For `GET` requests, you can send the requests through your internet browser, or utilize an API client (i.e. [Postman](https://www.postman.com/))
+- For `POST` or `PATCH` requests, you will need to use an API client to provide the required request body
+- A fully functional [Postman collection](https://github.com/tvaroglu/mr_tea/blob/main/postman_suite) is included with this repository, to further assist with UAT and endpoint exploration
+
+#### Tea Endpoint
+
+#### Subscription Endpoints
+
+*Create a new tea subscription for an existing customer*
+
+**Example Request:**
+
+```
+POST /api/v1/customers/{:id}/subscriptions
+```
+
+With the following `JSON` body:
+
+```json
+{
+    "title": "green",
+    "tea_id": 1,
+    "price": 20,
+    "frequency": "Weekly",
+    "status": "Active",
+    "customer_id": 3
+}
+```
+
+**Example Response:**
+
+201 (Created)
+
+```json
+{
+    "data": {
+        "id": "4",
+        "type": "subscription",
+        "attributes": {
+            "customer_id": 3,
+            "tea_id": 1,
+            "title": "green",
+            "price": 20,
+            "frequency": "Weekly",
+            "status": "Active"
+        }
+    }
+}
+```
+
+**Example Request:**
+
+```
+POST /api/v1/customers/{:id}/subscriptions
+```
+
+With the following `JSON` body:
+
+```json
+{}
+```
+
+**Example Response:**
+
+422 (Unprocessable Entity)
+
+```json
+{
+    "errors": [
+        "Tea can't be blank",
+        "Price can't be blank",
+        "Price is not a number",
+        "Frequency can't be blank",
+        "Status can't be blank"
+    ]
+}
+```
+
+---
+
+*Cancel an existing tea subscription*
+
+**Example Request:**
+
+```
+PATCH /api/v1/customers/{:customer_id}/subscriptions/{:id}
+```
+
+With the following `JSON` body:
+
+```json
+{
+    "status": "Cancelled"
+}
+```
+
+**Example Response:**
+
+200 (OK)
+
+```json
+{
+    "data": {
+        "id": "4",
+        "type": "subscription",
+        "attributes": {
+            "customer_id": 3,
+            "tea_id": "5fa402618765bf0017f09759",
+            "title": "green",
+            "price": 20,
+            "frequency": "Weekly",
+            "status": "Cancelled"
+        }
+    }
+}
+```
+
+**Example Request:**
+
+```
+PATCH /api/v1/customers/{:customer_id}/subscriptions/{:id}
+```
+
+With the following `JSON` body:
+
+```json
+{
+    "status": "TESTING"
+}
+```
+
+**Example Response:**
+
+422 (Unprocessable Entity)
+
+```json
+{
+    "errors": [
+        "'TESTING' is not a valid status"
+    ]
+}
+```
+
+**Example Request:**
+
+```
+PATCH /api/v1/customers/{:customer_id}/subscriptions/bar
+```
+
+---
+
+*Get all tea subscriptions for an existing customer*
+
+**Example Request:**
+
+```
+GET /api/v1/customers/{:id}/subscriptions
+```
+
+**Example Response:**
+
+200 (OK)
+
+```json
+{
+    "data": [
+        {
+            "id": "4",
+            "type": "subscription",
+            "attributes": {
+                "customer_id": 3,
+                "tea_id": "5fa402618765bf0017f09759",
+                "title": "green",
+                "price": 20,
+                "frequency": "Weekly",
+                "status": "Active"
+            }
+        },
+        {
+            "id": "5",
+            "type": "subscription",
+            "attributes": {
+                "customer_id": 3,
+                "tea_id": 2,
+                "title": "chai",
+                "price": 15.5,
+                "frequency": "Weekly",
+                "status": "Cancelled"
+            }
+        }
+    ]
+}
+```
 
 ## <ins>Setup</ins>
 
