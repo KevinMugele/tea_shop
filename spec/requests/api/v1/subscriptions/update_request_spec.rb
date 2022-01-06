@@ -51,16 +51,16 @@ describe 'Subscriptions::Update', type: :request do
       end
     end
 
-    # context 'when the params are invalid' do
-    #   let(:errors) { ["'TESTING' is not a valid status"] }
-    #
-    #   before { patch "/api/v1/customers/#{customer.id}/subscriptions/#{subscription.id}", params: { status: 'TESTING' } }
-    #
-    #   it 'returns an error messages' do
-    #     expect(json).not_to be_empty
-    #
-    #     expect(json[:errors]).to eq errors
-    #   end
-    # end
+    context 'when the params are invalid' do
+      let(:errors) { ["'TESTING' is not a valid status"] }
+
+      before { patch "/api/v1/customers/#{customer.id}/subscriptions/#{subscription.id}", params: { status: 'TESTING' } }
+
+      it 'returns an error messages' do
+        expect(json).not_to be_empty
+
+        expect(json[:errors]).to eq errors
+      end
+    end
   end
 end
