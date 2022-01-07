@@ -93,7 +93,6 @@ The `base path` of each endpoint is:
 
 - For `GET` requests, you can send the requests through your internet browser, or utilize an API client (i.e. [Postman](https://www.postman.com/))
 - For `POST` or `PATCH` requests, you will need to use an API client to provide the required request body
-- A fully functional [Postman collection](https://github.com/tvaroglu/mr_tea/blob/main/postman_suite) is included with this repository, to further assist with UAT and endpoint exploration
 
 #### Tea Endpoint
 
